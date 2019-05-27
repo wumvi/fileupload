@@ -1,8 +1,8 @@
 {
   "name": "@wumvi/fileupload",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "",
-  "author": "",
+  "author": "Kozlenko Vitaliy",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
@@ -24,11 +24,14 @@
     "webpack-dev-server": "^3.2.1",
     "webpack-hot-client": "^4.1.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wumvi/fileupload.git"
+  },
   "scripts": {
     "dev": "webpack-dev-server --mode development --config webpack.dev.config.js --hot --port 8130",
     "prod": "webpack --mode production --config webpack.prod.config.js",
-    "server:dev": "node dev/server.js",
-    "publish": "npm publish --access public"
+    "server:dev": "node dev/server.js"
   },
   "main": "dist/fileupload.js",
   "types": "dist/fileupload.d.ts"
