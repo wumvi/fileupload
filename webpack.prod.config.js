@@ -4,14 +4,14 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
-    'fileupload': './src/fileupload.ts',
-    'fileupload.min': './src/fileupload.ts',
+    'index': './src/index.ts',
+    'index.min': './src/index.ts',
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
     libraryTarget: 'umd',
-    library: 'fileupload',
+    library: 'index',
     umdNamedDefine: true
   },
   devtool: 'source-map',
@@ -20,6 +20,9 @@ module.exports = {
       include: /\.min\.js$/,
       sourceMap: true,
     })],
+  },
+  externals: {
+    '@wumvi/jsonapi': '*',
   },
   ...jsonCommon
 }

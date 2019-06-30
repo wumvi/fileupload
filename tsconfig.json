@@ -1,24 +1,3 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceRoot": "./src/",
-    "declaration": true,
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "strict": true,
-    "strictNullChecks": true,
-    "lib": [
-      "es5",
-      "es2015",
-      "dom"
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "dev"
-  ]
+  "extends": "./tsconfig.base"
 }

@@ -1,35 +1,46 @@
-import { FileUpload } from '../src/fileupload'
-
-const fileInput = <HTMLInputElement>document.getElementById('file')
-fileInput.addEventListener('change', onFileInputChange)
+import { FileApi, IUploadFileControl } from '../src/file-api'
 
 interface HTMLInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
 
-const upload = new FileUpload({
-  onProgress: onFileProgress,
-  onError: onFileError,
-  onAbort: onAbort,
+const apiUrlInput = document.getElementById('apiUrl') as HTMLInputElement
+const sessionIdInput = document.getElementById('sessionId') as HTMLInputElement
+const filesInput = document.getElementById('files') as HTMLInputElement
+
+apiUrlInput.value = localStorage.getItem(apiUrlInput.id)!
+apiUrlInput.addEventListener('keyup', () => {
+  localStorage.setItem(apiUrlInput.id, apiUrlInput.value)
 })
 
-function onFileProgress (progress: number, uploadId: number): void {
-  console.log(progress, uploadId)
-}
+sessionIdInput.value = localStorage.getItem(sessionIdInput.id)!
+sessionIdInput.addEventListener('keyup', () => {
+  localStorage.setItem(sessionIdInput.id, sessionIdInput.value)
+})
 
-function onFileError (): void {
-  console.log('error')
-}
+filesInput.addEventListener('change', onFileInputChange)
 
-function onAbort (): void {
-  console.log('onAbort')
+const control:IUploadFileControl  = {
+  onProgress: (progress => console.log(progress)),
+  abort: () => {}
 }
 
 function onFileInputChange (event: Event) {
-  const files = (event as HTMLInputEvent).target.files!
-  upload.upload('file', files[0], 'http://localhost:8140', 123)
+  const files = Array.from((event as HTMLInputEvent).target.files!)
+  console.log(files)
+
+  const apiUrl = apiUrlInput.value
+  const sessionId = sessionIdInput.value
+
+  const fileApi = new FileApi(apiUrl, sessionId)
+  fileApi.uploadFiles(files, control).then((result: any) => {
+    console.log(result)
+  }).catch((error: any) => {
+    console.error(error)
+  })
 }
 
-document.getElementById('abort')!.addEventListener('click', () => {
-  upload.abort()
+const abortBtn = document.getElementById('abortBtn') as HTMLButtonElement
+abortBtn.addEventListener('click', () => {
+  control.abort && control.abort()
 })

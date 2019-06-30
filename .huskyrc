@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "pre-commit": "echo pre-commit",
+    "pre-push": "echo pre-push",
+    "commit-msg": "echo commitlint -E HUSKY_GIT_PARAMS"
+  }
+}

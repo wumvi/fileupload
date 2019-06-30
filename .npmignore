@@ -1,1 +1,7 @@
 dev
+webpack*
+tsconfig*
+README.md
+.babelrc
+.eslintrc.json
+videoSrc

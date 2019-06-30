@@ -6,14 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dev</title>
+    <style>
+        label {
+            display: block;
+            margin: 8px 0;
+        }
+
+        input {
+            min-width: 50%;
+        }
+
+        .block {
+            margin: 8px 0;
+        }
+    </style>
 </head>
 <body>
-<form action="http://localhost:8140/" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="textfield" value="textvalue"/>
-    <input type="file" id="file" name="file" multiple/>
-    <input type="submit"/>
 
-</form>
-<button id="abort">abort</button>
+<label>api url <input id="apiUrl" value=""/></label>
+<label>session_id <input id="sessionId" value=""/></label>
+<label>files <input type="file" id="files" name="files[]" multiple/></label>
+
+<div class="block">
+    <button id="abortBtn">abort</button>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "lib": [
+      "es5",
+      "dom",
+      "es2017"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "dev"
+  ]
+}
